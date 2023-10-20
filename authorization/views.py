@@ -1,12 +1,16 @@
-import sys
+from django.http import JsonResponse
+from .forms import SignUpForm
+from django.views.decorators.csrf import csrf_exempt
 
-from django.shortcuts import render
-sys.path.insert(1, "C:\Users\User\GymTracker\main")
-from main.models import User
-
-# Create your views here.
-
-
-# def signup_view(request):
-#     user = User(**request.form)
-#     user.save()
+@csrf_exempt
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return JsonResponse({'message': 'User created successfully', 'user_id': user.id}, status=201)
+        else:
+            errors = form.errors.as_json()
+            return JsonResponse({'errors': errors}, status=400)
+    else:
+        return JsonResponse({'message': 'Invalid request method'}, status=405)

@@ -1,16 +1,10 @@
 import sys
-
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.forms import EmailField
-
-sys.path.insert(1, "C:\Users\User\GymTracker\main")
+sys.path.insert(1, "C:\\Users\\lapch\\goiteens\\Gym_Tracker_Application\\main\\")
 from main.models import User
 
 
-class SignUpForm(UserCreationForm):
-    about = forms.TextInput()
-    email = EmailField()
-
+class SignUpForm(forms.ModelForm):
     class Meta:
         model = User
+        fields = ['username', 'email', 'about', 'password']

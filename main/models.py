@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    about = models.CharField()
+    about = models.CharField(max_length=512)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -15,14 +15,14 @@ class User(AbstractUser):
 
 
 class Exercise(models.Model):
-    description = models.CharField()
-    name = models.CharField()
-    image = models.CharField()
+    description = models.CharField(max_length=512)
+    name = models.CharField(max_length=128)
+    image = models.CharField(max_length=128)
 
 
 class Workout(models.Model):
-    description = models.CharField()
-    name = models.CharField()
+    description = models.CharField(max_length=512)
+    name = models.CharField(max_length=128)
 
 
 class WorkoutData(models.Model):
