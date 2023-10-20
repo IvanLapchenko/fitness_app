@@ -79,15 +79,14 @@ AUTH_USER_MODEL = "main.User"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gym_bd',
-        'USER': 'postgres',
-        'PASSWORD': 'stalker_web55',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'gym',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST':'localhost',
+        'PORT':'3306',
     }
 }
-
 
 
 
